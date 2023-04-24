@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  @include font-family-cinzel;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  margin: auto;
+  min-height: 100vh;
+}
+
+.transition-hover {
+  transition: none;
+}
+
+
+.container {
+  width: 100%;
+  max-width: #{$container-width + $offset-side * 2};
+  padding-right: $offset-side-xs;
+  padding-left: $offset-side-xs;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include media-sm {
+    padding-right: $offset-side-sm;
+    padding-left: $offset-side-sm;
+  }
+
+  @include media-md {
+    padding-right: $offset-side-md;
+    padding-left: $offset-side-md;
+  }
+
+  @include media-lg {
+    padding-right: $offset-side-lg;
+    padding-left: $offset-side-lg;
+  }
+}

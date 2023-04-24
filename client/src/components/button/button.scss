@@ -1,0 +1,19 @@
+.button {
+  background-color: $primary-400;
+  color: $clr_white;
+  width: 100%;
+  padding: 20px 40px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color .15s ease-out;
+  @include animated;
+  border-radius: 3px;
+
+  &:hover {
+    background-color: $primary-300;
+  }
+
+  &:active {
+    background-color: $primary-200;
+  }
+}

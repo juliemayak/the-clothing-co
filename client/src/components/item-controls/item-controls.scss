@@ -1,0 +1,10 @@
+.item-controls {
+  display: flex;
+  align-items: center;
+  background-color: $neutral_100;
+  border-radius: 3px;
+
+  &__text {
+    color: $primary-300;
+  }
+}

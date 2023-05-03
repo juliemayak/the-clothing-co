@@ -2,9 +2,9 @@
  * order controller
  */
 
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const stripe = require("stripe")(process.env.VITE_STRIPE_SECRET_KEY);
 
-import { factories } from '@strapi/strapi';
+import { factories } from "@strapi/strapi";
 
 export default factories.createCoreController(
   "api::order.order",
@@ -15,10 +15,10 @@ export default factories.createCoreController(
       try {
         //retrieve item info
         const lineItems = await Promise.all(
-          products.map(async (product) => {
+          products.map(async (product, _params) => {
             const item = await strapi
               .service("api::item.item")
-              .findOne(product.id);
+              .findOne(product.id, _params);
 
             return {
               price_data: {
@@ -39,16 +39,16 @@ export default factories.createCoreController(
           customer_email: email,
           mode: "payment",
           success_url: "http://localhost:5173/checkout/success",
-          cancel_url: "http://localhost:5173",
+          cancel_url: "http://localhost:5173/checkout/error",
           line_items: lineItems,
         });
 
-        // create the item
+        // create the order
         await strapi.service("api::order.order").create({
           data: { userName, products, stripeSessionId: session.id },
         });
 
-        // return the session id
+        // return session id
         return { id: session.id };
       } catch (error) {
         ctx.response.status = 500;

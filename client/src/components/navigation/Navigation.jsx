@@ -5,12 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./navigation.scss";
 
 import { Badge, IconButton } from "@mui/material";
-import {
-  PersonOutline,
-  ShoppingBagOutlined,
-  MenuOutlined,
-  SearchOutlined,
-} from "@mui/icons-material";
+import { PersonOutline, ShoppingBagOutlined, FavoriteBorderOutlined } from "@mui/icons-material";
 import Logo from "../svg/Logo.jsx";
 
 const Navigation = () => {
@@ -18,6 +13,9 @@ const Navigation = () => {
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart.cart);
+  const handleHighlightsClick = () => {
+    navigate("/highlights");
+  };
 
   return (
     <div className="nav container">
@@ -25,8 +23,8 @@ const Navigation = () => {
         <Logo />
       </div>
       <div className="nav__controls">
-        <IconButton sx={{ color: "black" }}>
-          <SearchOutlined />
+        <IconButton sx={{ color: "black" }} onClick={handleHighlightsClick}>
+          <FavoriteBorderOutlined />
         </IconButton>
         <IconButton sx={{ color: "black" }}>
           <PersonOutline />
@@ -50,11 +48,6 @@ const Navigation = () => {
             <ShoppingBagOutlined />
           </IconButton>
         </Badge>
-
-        {/* <div className="nav__controls _mobile">
-          <IconButton sx={{ color: "black" }}>
-            <MenuOutlined />
-          </IconButton>*/}
       </div>
     </div>
   );

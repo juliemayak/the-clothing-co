@@ -4,6 +4,7 @@ import Home from "./scenes/home/Home";
 import Checkout from "./scenes/checkout/Checkout";
 import ItemDetails from "./scenes/item-details/ItemDetails";
 import Confirmation from "./scenes/checkout/confirmation/Confirmation";
+import ErrorCheckout from "./scenes/checkout/error/ErrorCheckout";
 import Layout from "./components/layout/Layout";
 import "./reset.css";
 
@@ -28,6 +29,7 @@ function App() {
             <Route path="item/:itemId" element={<ItemDetails />} />
             <Route path="checkout" element={<Checkout />} />
             <Route path="checkout/success" element={<Confirmation />} />
+            <Route path="checkout/error" element={<ErrorCheckout />} />
           </Routes>
         </Layout>
       </BrowserRouter>

@@ -9,8 +9,6 @@
     text-transform: uppercase;
   }
 
-  &__text {}
-
   &__input {
     &-container {
       padding: 2px 4px;
@@ -19,6 +17,7 @@
       align-items: center;
       width: 75%;
       background-color: $neutral-100;
+      user-select: none;
     }
 
     &-text {
@@ -27,6 +26,7 @@
       padding: 10px;
       transition: color .15s ease-out;
       color: $clr_black;
+      user-select: none;
 
       &:hover {
         color: $secondary-600;

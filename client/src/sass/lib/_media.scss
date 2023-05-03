@@ -21,6 +21,12 @@
   }
 }
 
+@mixin max-screen($max) {
+  @include mq($max-width: $max) {
+    @content;
+  }
+}
+
 @mixin min-screen($min) {
   @include mq($min-width: $min) {
     @content;

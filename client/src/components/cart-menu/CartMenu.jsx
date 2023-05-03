@@ -19,8 +19,10 @@ const CartMenu = () => {
   }, 0);
 
   const handleCheckoutBtnClick = () => {
-    navigate("/checkout");
-    dispatch(setIsCartOpen({}));
+    if (cart.length >= 1) {
+      navigate("/checkout");
+      dispatch(setIsCartOpen({}));
+    }
   };
 
   const toggleCartMenu = () => dispatch(setIsCartOpen({}));
@@ -91,7 +93,11 @@ const CartMenu = () => {
               <p className="cart-menu__footer-text">subtotal</p>
               <p className="cart-menu__footer-text">${totalPrice}</p>
             </div>
-            <Button onClick={handleCheckoutBtnClick} text="checkout" />
+            <Button
+              onClick={handleCheckoutBtnClick}
+              text="checkout"
+              isDisabled={cart.length === 0}
+            />
           </div>
         </div>
       </div>

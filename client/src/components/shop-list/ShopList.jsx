@@ -7,7 +7,7 @@ import { setItems } from "@/state";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 const ShopList = () => {
-  const breakPoint = useMediaQuery("(min-width:480px)");
+  const isNonMobile = useMediaQuery("(min-width:480px)");
 
   const dispatch = useDispatch();
   const [tabValue, setTabValue] = useState("all");
@@ -16,7 +16,7 @@ const ShopList = () => {
   const handleTabChange = (e, val) => setTabValue(val);
 
   function getItems() {
-    return fetch("http://localhost:1337/api/items?populate=image", { method: "GET" })
+    return fetch(`${import.meta.env.VITE_BASE_URL}/api/items?populate=image`, { method: "GET" })
       .then((response) => response.json())
       .then((json) => {
         const items = json.data;
@@ -53,13 +53,13 @@ const ShopList = () => {
         sx={{
           mb: "25px",
           "& .MuiTabs-flexContainer": {
-            flexDirection: breakPoint ? "row" : "column",
+            flexDirection: isNonMobile ? "row" : "column",
           },
           "& .MuiTabs-indicator": {
             backgroundColor: "#000",
           },
         }}
-        TabIndicatorProps={{ sx: { display: breakPoint ? "block" : "none" } }}
+        TabIndicatorProps={{ sx: { display: isNonMobile ? "block" : "none" } }}
       >
         {Object.keys(categories).map((category) => {
           const categoryName = category.replace(/([a-z])([A-Z])/g, "$1 $2");

@@ -33,9 +33,7 @@ const Form = ({
   };
   const cart = useSelector((state) => state.cart.cart);
 
-  const stripePromise = loadStripe(
-    "pk_test_51JxXKXLtsv2PBqJe00BSLps8HLYtJcuVVG5MctkEV7q2eZRI53LWr5I797T6ZWy8XNkerBjTVxCnTX0GDHBQszen00k7C46GV0"
-  );
+  const stripePromise = loadStripe(`${import.meta.env.STRIPE_PUBLISHABLE_KEY}`);
 
   async function makePayment(values) {
     const stripe = await stripePromise;

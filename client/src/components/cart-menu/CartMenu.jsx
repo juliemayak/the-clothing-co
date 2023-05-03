@@ -26,7 +26,7 @@ const CartMenu = () => {
   const toggleCartMenu = () => dispatch(setIsCartOpen({}));
 
   return (
-    <div className={`cart-menu ${isCartOpen ? "_open" : ""}`}>
+    <div className={`cart-menu${isCartOpen ? " _open" : ""}`}>
       <div className="cart-menu__overlay" />
       <div className="cart-menu__modal">
         <div className="cart-menu__container">
@@ -55,7 +55,7 @@ const CartMenu = () => {
               return (
                 <div key={`${name}-${item.id}`} className="cart-menu__item">
                   <div className="cart-menu__item-img">
-                    <img alt={name} src={`http://localhost:1337${url}`} />
+                    <img alt={name} src={`${import.meta.env.VITE_BASE_URL}${url}`} />
                   </div>
                   <div className="cart-menu__item-description">
                     <div className="cart-menu__item-header">
@@ -69,11 +69,13 @@ const CartMenu = () => {
                     </div>
                     <p className="cart-menu__item-text">{shortDescription}</p>
                     <div className="cart-menu__item-footer">
-                      <ItemControls
-                        handleMinusClick={() => dispatch(decreaseCount({ id: id }))}
-                        handlePlusClick={() => dispatch(increaseCount({ id: id }))}
-                        count={count}
-                      />
+                      <div className="cart-menu__item-footer-cotrols">
+                        <ItemControls
+                          handleMinusClick={() => dispatch(decreaseCount({ id: id }))}
+                          handlePlusClick={() => dispatch(increaseCount({ id: id }))}
+                          count={count}
+                        />{" "}
+                      </div>
                       <p className="cart-menu__item-text">
                         ${price} x {count}
                       </p>

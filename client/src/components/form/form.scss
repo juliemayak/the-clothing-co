@@ -1,0 +1,22 @@
+.form {
+  &__buttons {
+    display: flex;
+    margin-top: 30px;
+
+    &-back {
+      background-color: $primary-300;
+
+      &:hover {
+        background-color: $primary-400;
+      }
+    }
+
+    &>* {
+      margin-right: 15px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

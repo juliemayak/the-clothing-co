@@ -1,0 +1,15 @@
+.address-form {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  &>div {
+    @include max-screen($breakpoint-md) {
+      grid-column: span 4;
+    }
+  }
+
+  // sx={{
+  //   "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
+  // }}
+}

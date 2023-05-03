@@ -16,7 +16,17 @@ export const cartSlice = createSlice({
     },
 
     addToCart: (state, action) => {
-      state.cart = [...state.cart, action.payload.item];
+      const existingItem = state.cart.find(item => item.id === action.payload.item.id);
+      if (existingItem) {
+        state.cart = state.cart.map(item => {
+          if (item.id === action.payload.item.id) {
+            item.count += action.payload.item.count;
+          }
+          return item;
+        });
+      } else {
+        state.cart = [...state.cart, action.payload.item];
+      }
     },
 
     removeFromCart: (state, action) => {
@@ -28,7 +38,7 @@ export const cartSlice = createSlice({
         if (item.id === action.payload.id) {
           item.count++;
         }
-        return item
+        return item;
       })
     },
 

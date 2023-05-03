@@ -1,0 +1,16 @@
+.checkout {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+
+  &__form {
+    width: 100%;
+  }
+}
+
+.MuiCircularProgress-root {
+  margin: 30px 0;
+  width: 60px !important;
+  height: 60px !important;
+}

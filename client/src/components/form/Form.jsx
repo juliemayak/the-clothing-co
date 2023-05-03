@@ -6,12 +6,14 @@ import Shipping from "@/components/form/blocks/shipping/Shipping";
 import "./form.scss";
 import { loadStripe } from "@stripe/stripe-js";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 const Form = ({
   activeCheckoutStep,
   setActiveCheckoutStep,
   isFirstCheckoutStep,
   isSecondCheckoutStep,
+  setIsLoading,
 }) => {
   const handleFormSubmit = async (values, actions) => {
     setActiveCheckoutStep(activeCheckoutStep + 1);
@@ -34,6 +36,7 @@ const Form = ({
   const cart = useSelector((state) => state.cart.cart);
   const stripePromise = loadStripe(`${import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY}`);
   async function makePayment(values) {
+    setIsLoading(true);
     const stripe = await stripePromise;
     const requestBody = {
       userName: [values.shippingAddress.firstName, values.shippingAddress.lastName].join(" "),
@@ -53,6 +56,7 @@ const Form = ({
     await stripe.redirectToCheckout({
       sessionId: session.id,
     });
+    await setIsLoading(false);
   }
 
   return (

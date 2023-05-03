@@ -32,9 +32,7 @@ const Form = ({
     actions.setTouched({});
   };
   const cart = useSelector((state) => state.cart.cart);
-
-  const stripePromise = loadStripe(`${import.meta.env.STRIPE_PUBLISHABLE_KEY}`);
-
+  const stripePromise = loadStripe(`${import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY}`);
   async function makePayment(values) {
     const stripe = await stripePromise;
     const requestBody = {

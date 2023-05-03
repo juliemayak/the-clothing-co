@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Home from "./scenes/home/Home";
 import Checkout from "./scenes/checkout/Checkout";
 import ItemDetails from "./scenes/item-details/ItemDetails";
-import Confirmation from "./scenes/checkout/Confirmation";
+import Confirmation from "./scenes/checkout/confirmation/Confirmation";
 import Layout from "./components/layout/Layout";
 import "./reset.css";
 

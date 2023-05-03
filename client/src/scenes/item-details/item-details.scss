@@ -2,13 +2,24 @@
   &__item {
     display: flex;
     margin-bottom: 40px;
+    flex-direction: column;
+
+    @include media-md {
+      flex-direction: row;
+    }
 
     &-img {
-      height: 80vh;
-      flex: 1 1 40%;
-      margin-right: 30px;
       border-radius: 3px;
       overflow: hidden;
+      margin-right: 0;
+      margin-bottom: 10px;
+      height: 80vh;
+
+      @include media-md {
+        flex: 1 1 40%;
+        margin-right: 30px;
+        margin-bottom: 0;
+      }
 
       img {
         width: 100%;
@@ -19,15 +30,20 @@
     }
 
     &-info {
-      flex: 1 1 50%;
-      margin-bottom: 40px;
+      @include media-md {
+        flex: 1 1 50%;
+        margin-bottom: 40px;
+      }
 
     }
 
     &-header {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 50px;
+
+      @include media-md {
+        margin-bottom: 50px;
+      }
     }
 
     &-description {

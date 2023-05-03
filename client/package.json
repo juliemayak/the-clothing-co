@@ -24,6 +24,7 @@
     "react-redux": "^8.0.5",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.10.0",
+    "stripe": "^12.3.0",
     "yup": "^1.1.1"
   },
   "devDependencies": {

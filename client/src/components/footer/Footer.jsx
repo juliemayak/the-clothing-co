@@ -75,10 +75,12 @@ function Footer() {
         <ul className="footer__links-container">
           {footerData.map((column) => {
             const footerLinks = column.links.map(({ name, link }) => (
-              <li className="footer__links-item">{link ? <a href={link}>{name}</a> : name}</li>
+              <li className="footer__links-item" key={name}>
+                {link ? <a href={link}>{name}</a> : name}
+              </li>
             ));
             return (
-              <div className="footer__links">
+              <div className="footer__links" key={column.name}>
                 <h4 className="footer__links-title">{column.name}</h4>
                 {footerLinks}
               </div>

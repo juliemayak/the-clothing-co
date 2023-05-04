@@ -28,7 +28,7 @@ const ShopList = () => {
     getItems();
   }, []);
 
-  const categories = items.reduce(
+  const categories = items?.reduce(
     (accumulator, item) => {
       const category = item.attributes.category;
       if (category) {
@@ -61,17 +61,16 @@ const ShopList = () => {
         }}
         TabIndicatorProps={{ sx: { display: isNonMobile ? "block" : "none" } }}
       >
-        {Object.keys(categories).map((category) => {
-          const categoryName = category.replace(/([a-z])([A-Z])/g, "$1 $2");
-          const categoryItems = categories[category];
-          const shouldRenderTab = category === "all" || categoryItems.length > 0;
-          return shouldRenderTab && <Tab key={category} label={categoryName} value={category} />;
-        })}
+        {categories &&
+          Object.keys(categories).map((category) => {
+            const categoryName = category.replace(/([a-z])([A-Z])/g, "$1 $2");
+            const categoryItems = categories[category];
+            const shouldRenderTab = category === "all" || categoryItems.length > 0;
+            return shouldRenderTab && <Tab key={category} label={categoryName} value={category} />;
+          })}
       </Tabs>
       <div className="shop__list">
-        {categories[tabValue].map((item) => (
-          <ShopItem key={item.id} item={item} />
-        ))}
+        {categories && categories[tabValue].map((item) => <ShopItem key={item.id} item={item} />)}
       </div>
     </div>
   );

@@ -31,9 +31,9 @@ const Navigation = () => {
         </IconButton>
 
         <Badge
-          badgeContent={cart.length}
+          badgeContent={cart?.length}
           color="secondary"
-          invisible={cart.length === 0}
+          invisible={cart?.length === 0}
           sx={{
             "& .MuiBadge-badge": {
               right: 5,

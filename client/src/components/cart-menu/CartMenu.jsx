@@ -13,7 +13,7 @@ const CartMenu = () => {
   const cart = useSelector((state) => state.cart.cart);
   const isCartOpen = useSelector((state) => state.cart.isCartOpen);
 
-  const totalPrice = cart.reduce((acc, item) => {
+  const totalPrice = cart?.reduce((acc, item) => {
     acc += item.count * item.attributes.price;
     return acc;
   }, 0);
@@ -33,14 +33,14 @@ const CartMenu = () => {
       <div className="cart-menu__modal">
         <div className="cart-menu__container">
           <div className="cart-menu__header">
-            <h3 className="cart-menu__header-title">shopping bag ({cart.length})</h3>
+            <h3 className="cart-menu__header-title">shopping bag ({cart?.length})</h3>
             <IconButton sx={{ right: "-12px", color: "#000" }} onClick={toggleCartMenu}>
               <CloseIcon />
             </IconButton>
           </div>
 
           <div className="cart-menu__body">
-            {cart.map((item) => {
+            {cart?.map((item) => {
               const { id, count } = item;
 
               const { price, name, image, shortDescription } = item.attributes;
@@ -96,7 +96,7 @@ const CartMenu = () => {
             <Button
               onClick={handleCheckoutBtnClick}
               text="checkout"
-              isDisabled={cart.length === 0}
+              isDisabled={cart?.length === 0}
             />
           </div>
         </div>

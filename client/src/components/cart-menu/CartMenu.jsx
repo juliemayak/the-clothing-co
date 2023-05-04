@@ -29,7 +29,7 @@ const CartMenu = () => {
 
   return (
     <div className={`cart-menu${isCartOpen ? " _open" : ""}`}>
-      <div className="cart-menu__overlay" />
+      <div className="cart-menu__overlay" onClick={toggleCartMenu} />
       <div className="cart-menu__modal">
         <div className="cart-menu__container">
           <div className="cart-menu__header">

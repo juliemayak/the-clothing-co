@@ -3,7 +3,7 @@ import "./shop-list.scss";
 import ShopItem from "@/components/shop-item/ShopItem";
 import { Tabs, Tab } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { setItems } from "@/state";
+import { setItems } from "@/state/cart";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 const ShopList = () => {

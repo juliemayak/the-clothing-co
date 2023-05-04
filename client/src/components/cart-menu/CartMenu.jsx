@@ -1,7 +1,7 @@
 import { Divider, IconButton } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import CloseIcon from "@mui/icons-material/Close";
-import { increaseCount, decreaseCount, removeFromCart, setIsCartOpen } from "@/state";
+import { increaseCount, decreaseCount, removeFromCart, setIsCartOpen } from "@/state/cart";
 import { useNavigate } from "react-router-dom";
 import Button from "@/components/button/Button";
 import ItemControls from "@/components/item-controls/ItemControls";

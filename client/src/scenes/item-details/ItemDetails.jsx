@@ -8,7 +8,9 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { addToCart } from "@/state";
+import { addToCart } from "@/state/cart";
+import { addToFavorites } from "@/state/favs";
+
 import "./item-details.scss";
 
 const ItemDetails = () => {
@@ -47,6 +49,10 @@ const ItemDetails = () => {
   const handleMinusClick = () => setCount(Math.max(count - 1, 1));
   const handleButtonClick = () => {
     dispatch(addToCart({ item: { ...item, count } }));
+  };
+  const handleFavClick = () => {
+    dispatch(addToFavorites({ item: { ...item } }));
+    console.log("first", item);
   };
 
   const getCategory = (text) =>
@@ -100,7 +106,7 @@ const ItemDetails = () => {
             />
           </div>
           <div>
-            <div className="item-details__item-wishlist">
+            <div className="item-details__item-wishlist" onClick={handleFavClick}>
               <FavoriteBorderOutlinedIcon />
               <span>add to wishlist</span>
             </div>

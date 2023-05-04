@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setIsCartOpen } from "@/state";
+import { setIsCartOpen } from "@/state/cart";
 import { useNavigate } from "react-router-dom";
 
 import "./navigation.scss";

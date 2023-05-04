@@ -59,6 +59,10 @@ const cartSlice = createSlice({
         state.isCartOpen = true;
         scrollLocker.lock();
       }
+    },
+
+    clearCart: (state) => {
+      state.cart = [];
     }
   }
 })
@@ -69,7 +73,8 @@ export const {
   removeFromCart,
   increaseCount,
   decreaseCount,
-  setIsCartOpen
+  setIsCartOpen,
+  clearCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

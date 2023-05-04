@@ -1,3 +1,6 @@
 {
-  "turboConsoleLog.includeFileNameAndLineNum": false
+  "turboConsoleLog.includeFileNameAndLineNum": false,
+  "cSpell.words": [
+    "Persistor"
+  ]
 }

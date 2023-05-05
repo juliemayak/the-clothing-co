@@ -26,7 +26,7 @@ const ItemDetails = () => {
   };
 
   const getItem = () => {
-    return fetch(`${import.meta.env.VITE_BASE_URL}/api/items/${itemId}?populate=image`, {
+    return fetch(`${import.meta.env.VITE_SERVER_URL}/api/items/${itemId}?populate=image`, {
       method: "GET",
     })
       .then((response) => response.json())
@@ -37,7 +37,7 @@ const ItemDetails = () => {
   };
 
   const getItems = () => {
-    return fetch(`${import.meta.env.VITE_BASE_URL}/api/items?populate=image`, { method: "GET" })
+    return fetch(`${import.meta.env.VITE_SERVER_URL}/api/items?populate=image`, { method: "GET" })
       .then((response) => response.json())
       .then((json) => {
         const items = json.data;

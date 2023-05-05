@@ -16,7 +16,7 @@ const ShopList = () => {
   const handleTabChange = (e, val) => setTabValue(val);
 
   function getItems() {
-    return fetch(`${import.meta.env.VITE_BASE_URL}/api/items?populate=image`, { method: "GET" })
+    return fetch(`${import.meta.env.VITE_SERVER_URL}/api/items?populate=image`, { method: "GET" })
       .then((response) => response.json())
       .then((json) => {
         const items = json.data;

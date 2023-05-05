@@ -76,9 +76,7 @@ const ItemDetails = () => {
         <div className="item-details__item-img">
           <img
             alt={item?.name}
-            src={`${import.meta.env.VITE_BASE_URL}${
-              item?.attributes?.image?.data?.attributes?.formats?.medium?.url
-            }`}
+            src={item?.attributes?.image?.data?.attributes?.formats?.medium?.url}
           />
         </div>
 

@@ -60,7 +60,7 @@ const ShopItem = ({ item, width }) => {
   return (
     <div className="item" style={{ width: `${width}` }}>
       <div className="item__image">
-        <img onClick={handleItemClick} src={`${import.meta.env.VITE_BASE_URL}${url}`} alt={name} />
+        <img onClick={handleItemClick} src={url} alt={name} />
         <div className="item__image-controls">
           <ItemControls
             handlePlusClick={increaseItemCount}

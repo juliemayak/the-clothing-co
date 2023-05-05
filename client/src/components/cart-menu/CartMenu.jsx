@@ -57,7 +57,7 @@ const CartMenu = () => {
               return (
                 <div key={`${name}-${item.id}`} className="cart-menu__item">
                   <div className="cart-menu__item-img">
-                    <img alt={name} src={`${import.meta.env.VITE_BASE_URL}${url}`} />
+                    <img alt={name} src={url} />
                   </div>
                   <div className="cart-menu__item-description">
                     <div className="cart-menu__item-header">

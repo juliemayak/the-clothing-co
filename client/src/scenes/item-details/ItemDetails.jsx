@@ -52,7 +52,6 @@ const ItemDetails = () => {
   };
   const handleFavClick = () => {
     dispatch(addToFavorites({ item: { ...item } }));
-    console.log("first", item);
   };
 
   const getCategory = (text) =>

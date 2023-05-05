@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    { "source": "/item/:itemId", "destination": "/" },
+    { "source": "/checkout", "destination": "/" },
+    { "source": "/checkout/success", "destination": "/" },
+    { "source": "/checkout/error", "destination": "/" },
+    { "source": "/highlights", "destination": "/" },
+    { "source": "/api/:path*", "destination": "https://the-clothing-co-server.onrender.com/:path*" }
+  ]
+}

@@ -76,7 +76,7 @@ const CartMenu = () => {
                           handleMinusClick={() => dispatch(decreaseCount({ id: id }))}
                           handlePlusClick={() => dispatch(increaseCount({ id: id }))}
                           count={count}
-                        />{" "}
+                        />
                       </div>
                       <p className="cart-menu__item-text">
                         ${price} x {count}

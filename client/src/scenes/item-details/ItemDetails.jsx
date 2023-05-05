@@ -61,7 +61,7 @@ const ItemDetails = () => {
   const relatedItems = items
     .filter(
       (shopItem) =>
-        shopItem.attributes.category === item.attributes.category && shopItem.id !== item.id
+        shopItem?.attributes.category === item?.attributes.category && shopItem?.id !== item.id
     )
     .slice(0, 4);
 
@@ -134,8 +134,8 @@ const ItemDetails = () => {
       <div className="item-details__products">
         <h3 className="item-details__products-title">Related Products</h3>
         <div className="item-details__products-list">
-          {relatedItems.map((item) => (
-            <ShopItem key={item.id} item={item} />
+          {relatedItems?.map((item) => (
+            <ShopItem key={item?.id} item={item} />
           ))}
         </div>
       </div>

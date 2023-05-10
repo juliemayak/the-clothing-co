@@ -1,12 +1,19 @@
 import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
-import { persistStore, persistReducer } from "redux-persist";
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import cartReducer from "./cart";
 import favReducer from "./favs";
-
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
-
 
 const rootPersistConfig = {
   key: "root",
@@ -35,6 +42,12 @@ const persistedReducer = persistReducer(rootPersistConfig, rootReducer);
 // Store
 export const configuredStore = configureStore({
   reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 export const configuredPersistor = persistStore(configuredStore);

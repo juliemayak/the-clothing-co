@@ -74,6 +74,11 @@
       @include font-family-fauna;
       font-size: 13px;
       font-weight: 700;
+
+      &._small {
+        font-size: 9px;
+        font-weight: 400;
+      }
     }
 
     &-img {

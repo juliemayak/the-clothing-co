@@ -43,7 +43,8 @@ const CartMenu = () => {
             {cart?.map((item) => {
               const { id, count } = item;
 
-              const { price, name, image, shortDescription } = item.attributes;
+              const { price, name, image, description } = item.attributes;
+              console.log("item.attributes", item.attributes);
 
               const {
                 data: {
@@ -63,18 +64,18 @@ const CartMenu = () => {
                     <div className="cart-menu__item-header">
                       <p className="cart-menu__item-text">{name}</p>
                       <IconButton
-                        onClick={() => dispatch(removeFromCart({ id: id }))}
+                        onClick={() => dispatch(removeFromCart({ id }))}
                         sx={{ right: "-12px" }}
                       >
                         <CloseIcon />
                       </IconButton>
                     </div>
-                    <p className="cart-menu__item-text">{shortDescription}</p>
+                    <p className="cart-menu__item-text _small">{description}</p>
                     <div className="cart-menu__item-footer">
-                      <div className="cart-menu__item-footer-cotrols">
+                      <div className="cart-menu__item-footer-controls">
                         <ItemControls
-                          handleMinusClick={() => dispatch(decreaseCount({ id: id }))}
-                          handlePlusClick={() => dispatch(increaseCount({ id: id }))}
+                          handleMinusClick={() => dispatch(decreaseCount({ id }))}
+                          handlePlusClick={() => dispatch(increaseCount({ id }))}
                           count={count}
                         />
                       </div>

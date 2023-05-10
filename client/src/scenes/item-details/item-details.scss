@@ -80,29 +80,7 @@
     }
 
     &-wishlist {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      transition: color .15s ease-out;
       margin-bottom: 15px;
-      user-select: none;
-
-      svg {
-        transition: fill .15s ease-out
-      }
-
-      &>span {
-        text-transform: uppercase;
-        margin-left: 10px;
-      }
-
-      &:hover {
-        color: $secondary-500;
-
-        svg {
-          fill: $secondary-500;
-        }
-      }
     }
 
     &-category {

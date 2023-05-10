@@ -44,7 +44,6 @@ const CartMenu = () => {
               const { id, count } = item;
 
               const { price, name, image, description } = item.attributes;
-              console.log("item.attributes", item.attributes);
 
               const {
                 data: {

@@ -1,12 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setIsCartOpen } from "@/state/cart";
 import { useNavigate } from "react-router-dom";
-
-import "./navigation.scss";
-
 import { Badge, IconButton } from "@mui/material";
 import { PersonOutline, ShoppingBagOutlined, FavoriteBorderOutlined } from "@mui/icons-material";
-import Logo from "../svg/Logo.jsx";
+import Logo from "@/components/svg/Logo";
+import "./navigation.scss";
 
 const Navigation = () => {
   const navigate = useNavigate();
@@ -16,6 +14,7 @@ const Navigation = () => {
   const handleHighlightsClick = () => {
     navigate("/highlights");
   };
+  const handleCartMenuClick = () => dispatch(setIsCartOpen());
 
   return (
     <div className="nav container">
@@ -44,7 +43,7 @@ const Navigation = () => {
             },
           }}
         >
-          <IconButton sx={{ color: "black" }} onClick={() => dispatch(setIsCartOpen({}))}>
+          <IconButton sx={{ color: "black" }} onClick={handleCartMenuClick}>
             <ShoppingBagOutlined />
           </IconButton>
         </Badge>

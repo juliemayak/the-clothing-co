@@ -32,8 +32,6 @@
     width: max(320px, 40%);
     height: 100%;
     background-color: $clr_white;
-    transition: transform .15s ease-out;
-    transform: translateX(100%);
   }
 
   &__container {
@@ -78,6 +76,7 @@
       &._small {
         font-size: 9px;
         font-weight: 400;
+        padding-right: 45px;
       }
     }
 
@@ -127,15 +126,4 @@
       margin-bottom: 20px;
     }
   }
-
-
-  &._open {
-    opacity: 1;
-    pointer-events: all;
-
-    .cart-menu__modal {
-      transform: translateX(0);
-    }
-  }
-
 }

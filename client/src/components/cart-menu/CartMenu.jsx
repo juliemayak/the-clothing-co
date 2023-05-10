@@ -11,7 +11,6 @@ const CartMenu = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
-  const isCartOpen = useSelector((state) => state.cart.isCartOpen);
 
   const totalPrice = cart?.reduce((acc, item) => {
     acc += item.count * item.attributes.price;
@@ -21,16 +20,18 @@ const CartMenu = () => {
   const handleCheckoutBtnClick = () => {
     if (cart.length >= 1) {
       navigate("/checkout");
-      dispatch(setIsCartOpen({}));
+      dispatch(setIsCartOpen());
     }
   };
 
-  const toggleCartMenu = () => dispatch(setIsCartOpen({}));
+  const toggleCartMenu = () => {
+    dispatch(setIsCartOpen());
+  };
 
   return (
-    <div className={`cart-menu${isCartOpen ? " _open" : ""}`}>
+    <div className="cart-menu" data-cart-menu>
       <div className="cart-menu__overlay" onClick={toggleCartMenu} />
-      <div className="cart-menu__modal">
+      <div className="cart-menu__modal" data-cart-menu-modal>
         <div className="cart-menu__container">
           <div className="cart-menu__header">
             <h3 className="cart-menu__header-title">shopping bag ({cart?.length})</h3>
@@ -39,7 +40,7 @@ const CartMenu = () => {
             </IconButton>
           </div>
 
-          <div className="cart-menu__body">
+          <div className="cart-menu__body" data-cart-menu-content>
             {cart?.map((item) => {
               const { id, count } = item;
 

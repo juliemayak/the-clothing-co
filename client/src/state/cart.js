@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import scrollLocker from "@/js/scroll-locker";
+import CartMenu from '@/js/cart-menu';
 
 const initialState = {
   isCartOpen: false,
@@ -52,12 +52,14 @@ const cartSlice = createSlice({
     },
 
     setIsCartOpen: (state) => {
+      const cartMenu = new CartMenu();
+
       if (state.isCartOpen) {
         state.isCartOpen = false;
-        scrollLocker.unlock();
+        cartMenu.closeCartMenu();
       } else {
         state.isCartOpen = true;
-        scrollLocker.lock();
+        cartMenu.openCartMenu();
       }
     },
 

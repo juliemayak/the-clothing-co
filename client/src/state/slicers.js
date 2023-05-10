@@ -25,7 +25,7 @@ const rootPersistConfig = {
 const cartPersistConfig = {
   key: "cart",
   storage,
-  blacklist: ["items"],
+  blacklist: ["items", "isCartOpen"],
 }
 const favPersistConfig = {
   key: "fav",

@@ -7,7 +7,7 @@ import Button from "@/components/button/Button";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "@/state/cart";
 import { addToFavorites } from "@/state/favs";
 
@@ -20,6 +20,21 @@ const ItemDetails = () => {
   const [count, setCount] = useState(1);
   const [item, setItem] = useState(null);
   const [items, setItems] = useState([]);
+
+  const highlights = useSelector((state) => state.fav.highlights);
+  const [isFavItem, setIsFavItem] = useState(
+    highlights?.some((favItem) => favItem.id === Number(itemId))
+  );
+
+  const handleFavClick = () => {
+    if (isFavItem) {
+      setIsFavItem(false);
+      dispatch(removeFromFavorites({ item }));
+    } else {
+      setIsFavItem(true);
+      dispatch(addToFavorites({ item }));
+    }
+  };
 
   const handleActiveTabChange = (_event, newValue) => {
     setTabValue(newValue);
@@ -49,9 +64,6 @@ const ItemDetails = () => {
   const handleMinusClick = () => setCount(Math.max(count - 1, 1));
   const handleButtonClick = () => {
     dispatch(addToCart({ item: { ...item, count } }));
-  };
-  const handleFavClick = () => {
-    dispatch(addToFavorites({ item: { ...item } }));
   };
 
   const getCategory = (text) =>
@@ -104,8 +116,17 @@ const ItemDetails = () => {
           </div>
           <div>
             <div className="item-details__item-wishlist" onClick={handleFavClick}>
-              <FavoriteBorderOutlinedIcon />
-              <span>add to wishlist</span>
+              <FavoriteBorderOutlinedIcon
+                sx={{
+                  cursor: "pointer",
+                  "&: hover": { opacity: "0.6" },
+                  fill: isFavItem ? "red" : "black",
+                }}
+              />
+              <span>
+                {!isFavItem && <span>add to wishlist</span>}
+                {isFavItem && <span>added to wishlist</span>}
+              </span>
             </div>
             <p className="item-details__item-category">
               CATEGORY: {getCategory(item?.attributes?.category)}

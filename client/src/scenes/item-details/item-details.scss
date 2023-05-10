@@ -91,7 +91,7 @@
         transition: fill .15s ease-out
       }
 
-      span {
+      &>span {
         text-transform: uppercase;
         margin-left: 10px;
       }

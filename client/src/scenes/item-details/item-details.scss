@@ -11,12 +11,14 @@
     &-img {
       border-radius: 3px;
       overflow: hidden;
-      margin-right: 0;
       margin-bottom: 10px;
       height: 80vh;
+      margin-left: auto;
+      margin-right: auto;
 
       @include media-md {
         flex: 1 1 40%;
+        margin-left: unset;
         margin-right: 30px;
         margin-bottom: 0;
       }

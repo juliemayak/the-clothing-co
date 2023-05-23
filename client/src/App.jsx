@@ -6,6 +6,7 @@ import ItemDetails from "./scenes/item-details/ItemDetails";
 import Confirmation from "./scenes/checkout/confirmation/Confirmation";
 import Highlights from "./scenes/highlights/Highlights";
 import ErrorCheckout from "./scenes/checkout/error/ErrorCheckout";
+import UserProfile from "./components/user-profile/UserProfile";
 import Layout from "./components/layout/Layout";
 import "./reset.css";
 
@@ -28,6 +29,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="item/:itemId" element={<ItemDetails />} />
+            <Route path="user/:userId" element={<UserProfile />} />
             <Route path="checkout" element={<Checkout />} />
             <Route path="checkout/success" element={<Confirmation />} />
             <Route path="checkout/error" element={<ErrorCheckout />} />

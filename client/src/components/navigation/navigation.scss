@@ -48,4 +48,49 @@
       margin-right: 10px;
     }
   }
+
+  &__user {
+    &-btn {
+      position: relative;
+    }
+
+    &-menu {
+      position: absolute;
+      top: 35px;
+      right: -50%;
+      width: fit-content;
+      background-color: $clr_white;
+      border-radius: 3px;
+      border: 1px solid rgba($clr_black, .4);
+      overflow: hidden;
+      height: 0;
+      opacity: 0;
+
+      &-item {
+        cursor: pointer;
+        white-space: nowrap;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid rgba($clr_black, .4);
+        padding: 0 10px;
+        line-height: 1;
+        text-transform: uppercase;
+        @include animated;
+
+        &:last-child {
+          border-bottom: 0;
+        }
+
+        &:hover {
+          background-color: #F5F5F5;
+        }
+
+        &:active {
+          opacity: .8;
+        }
+      }
+    }
+  }
 }

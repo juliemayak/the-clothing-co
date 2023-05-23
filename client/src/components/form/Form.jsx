@@ -1,3 +1,4 @@
+import { useAuth0 } from "@auth0/auth0-react";
 import Button from "@/components/button/Button";
 import { Formik } from "formik";
 import { checkoutSchema, formInitialValues } from "@/js/checkout-schema";
@@ -37,10 +38,15 @@ const Form = ({
   const cart = useSelector((state) => state.cart.cart);
   const stripePromise = loadStripe(`${import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY}`);
 
+  const { user } = useAuth0();
+
   async function makePayment(values) {
     setIsLoading(true);
     const stripe = await stripePromise;
+    const stripeId = user?.[`${import.meta.env.VITE_FRONTEND_URL}/stripe_customer_id`];
+
     const requestBody = {
+      stripeId,
       userName: [values.shippingAddress.firstName, values.shippingAddress.lastName].join(" "),
       email: values.email,
       products: cart.map(({ id, count }) => ({
@@ -55,6 +61,7 @@ const Form = ({
       body: JSON.stringify(requestBody),
     });
     const session = await response.json();
+
     await dispatch(clearCart({}));
     await stripe.redirectToCheckout({
       sessionId: session.id,
